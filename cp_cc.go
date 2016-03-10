@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 Licensed Materials - Property of IBM
-© Copyright IBM Corp. 2016
+Â© Copyright IBM Corp. 2016
 */
 package main
 
@@ -151,7 +151,7 @@ func (t *SimpleChaincode) createAccounts(stub *shim.ChaincodeStub, args []string
 
 }
 
-func (t *SimpleChaincode) issueCheque(stub *shim.ChaincodeStub, args []string) ([]byte, error) {
+func (t *SimpleChaincode) issueCommercialPaper(stub *shim.ChaincodeStub, args []string) ([]byte, error) {
 
 	/*		0
 		json
@@ -409,7 +409,7 @@ func GetCompany(companyID string, stub *shim.ChaincodeStub) (Account, error){
 
 
 // Still working on this one
-func (t *SimpleChaincode) encashCheque(stub *shim.ChaincodeStub, args []string) ([]byte, error) {
+func (t *SimpleChaincode) transferPaper(stub *shim.ChaincodeStub, args []string) ([]byte, error) {
 	/*		0
 		json
 	  	{
@@ -663,11 +663,11 @@ func (t *SimpleChaincode) Query(stub *shim.ChaincodeStub, function string, args 
 func (t *SimpleChaincode) Run(stub *shim.ChaincodeStub, function string, args []string) ([]byte, error) {
 	fmt.Println("run is running " + function)
 	
-	if function == "issueCheque" {
+	if function == "issueCommercialPaper" {
 		fmt.Println("Firing issueCheque");
 		//Create an asset with some value
-		return t.issueCheque(stub, args)
-	} else if function == "encashCheque" {
+		return t.issueCommercialPaper(stub, args)
+	} else if function == "transferPaper" {
 		fmt.Println("Firing encashCheque");
 		return t.transferPaper(stub, args)
 	} else if function == "createAccounts" {
@@ -746,3 +746,4 @@ var eigthDigit = map[int]string{
 	30: "W",
 	31: "X",
 }
+
